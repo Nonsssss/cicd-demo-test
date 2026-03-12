@@ -8,7 +8,7 @@ on: [push]
 
       steps:
       - name : checkout repo
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
        
-      - run: Run demo command
-      - run: echo "CI/CD pipeline is running!"
+      - name: Run demo command
+        run: echo "CI/CD pipeline is running!"
