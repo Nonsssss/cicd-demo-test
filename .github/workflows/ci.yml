@@ -2,13 +2,13 @@ name: Demo CI Pipeline
 
 on: [push]
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      steps:
-      - name : checkout repo
+    steps:
+      - name: Checkout repository
         uses: actions/checkout@v3
-       
+
       - name: Run demo command
-        run: echo "CI/CD pipeline is running!"
+        run: echo "CI/CD Pipeline is working!"
