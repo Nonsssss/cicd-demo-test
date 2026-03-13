@@ -9,20 +9,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Building the project..." > output.txt
-      - uses: actions/upload-artifact@v4
+      - name: Create build output directory
+        run: echo "Building the project..." > output.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifact
           path: output.txt
 
   test:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/upload-artifact@v4
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
         with:
           name: build-artifact
-      - run: cat output.txt
+          path: ./downloaded
+      -name: Check build output
+       run: cat ./downloaded/output.txt
   
   lint:
     runs-on: ubuntu-latest
