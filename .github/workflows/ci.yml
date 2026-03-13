@@ -27,7 +27,7 @@ jobs:
         with:
           name: build-artifact
           path: ./downloaded
-      -name: Check build output
+      - name: Check build output
        run: cat ./downloaded/output.txt
   
   lint:
