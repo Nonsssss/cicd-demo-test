@@ -18,5 +18,14 @@ jobs:
       - name: Run tests
         run: echo "Running tests..."
 
+      - name: Build application
+        run: echo "Building application..."
+      
+      - name: Deployment Simulation
+        run: echo "Deploying application..."
+
       - name: Run demo command
         run: echo "CI/CD Pipeline is working!"
+
+      - name: Print CI Message
+        run: echo "CI/CD Pipeline executed successfully!"
