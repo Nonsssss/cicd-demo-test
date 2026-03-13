@@ -5,27 +5,31 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Building the project..." > output.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: output.txt
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+      - run: cat output.txt
+  
+  lint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
-      - name: Install dependencies
-        run: echo "Installing dependencies..."
 
-      - name: Run tests
-        run: echo "Running tests..."
-
-      - name: Build application
-        run: echo "Building application..."
-      
-      - name: Deployment Simulation
-        run: echo "Deploying application..."
-
-      - name: Run demo command
-        run: echo "CI/CD Pipeline is working!"
-
-      - name: Print CI Message
-        run: echo "CI/CD Pipeline executed successfully!"
+      - name: Run linter
+        run: echo "Running linter..."
